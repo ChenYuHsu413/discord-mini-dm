@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "Discord Mini DM",
+  "version": "0.13.0",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAs/FoapdUDLqKKhx2ImIYZWTar2BiWJ3/0fpZPPnvqXSDfybPqoUc1vVz+Xk3aVtSRHFTxCQTNdPBtIlNCwGqKU64u6AnZRzymlbMNFY29Qx0ikVe8aGxfbSRSi3OmdPETdNkKhl7WoggLMuwz8ReYjUEdT3Zg6FN6k3ZOoXgK1jWWEp8bzZRkqgInZduYZV2sNlQQT15KTEa96Bfdiumh/cDkXZrhftyp9NPPdn1OQhbMcAljyhK5jEHd22DYRIfdSoEWGPHvS5mypWp/wZWsRLPg7KU42CizG5qMmfM3jKCu6rQu4JkSSsbY8CnhODVg+WzViEN0Wg3xArKFo5rEwIDAQAB",
+  "description": "Compact Discord direct-message layout",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://discord.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "styles.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "permissions": [
+    "storage"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "開啟 Mini DM"
+  },
+  "host_permissions": [
+    "https://discord.com/*"
+  ]
+}

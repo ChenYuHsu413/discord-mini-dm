@@ -1,0 +1,130 @@
+html[data-mini-active] :is(nav[class*="guilds_"],div[class*="guilds_"],aside[class*="sidebar_"],div[class*="sidebarList_"],div[class*="sidebar_"]):not(:has(main)):not(:has([role="main"])) {display:none!important;}
+html[data-mini-active] :is(div[class*="base_"],div[class*="content_"],div[class*="chat_"],div[class*="chatContent_"],div[class*="messagesWrapper_"]) {min-width:0!important;}
+html[data-mini-active] div[class*="chat_"] {flex:1 1 auto!important;}
+/* Layout independent of Discord theme. */
+html[data-mini-active] [class*="base_"] > :is([class*="bar_"],[class*="titleBar_"]) {display:none!important;}
+html[data-mini-active] [class*="chat_"] [class*="toolbar_"] {display:none!important;}
+html[data-mini-active]:is([data-mini-theme="light"],[data-mini-theme="custom"]) [class*="chat_"] :is([class*="title_"], [class*="chatContent_"], [class*="messagesWrapper_"]) {background-image:none!important;}
+html[data-mini-active] [class*="chat_"] [class*="title_"] {padding-right:92px!important;}
+html[data-mini-active] [class*="chat_"] [class*="avatarDecoration_"] {display:none!important;}
+html[data-mini-active] [class*="chat_"] img[class*="avatar_"] {width:24px!important;height:24px!important;}
+html[data-mini-active] [class*="chat_"] [class*="message_"][class*="cozy_"] {padding-left:44px!important;}
+html[data-mini-active] [class*="chat_"] [class*="message_"] img[class*="avatar_"] {left:10px!important;}
+html[data-mini-active] [class*="chat_"] [class*="message_"][class*="groupStart_"] {margin-top:7px!important;}
+html[data-mini-active] [class*="chat_"] [class*="messageContent_"] {font-size:var(--mini-font,13px)!important;line-height:1.4!important;}
+html[data-mini-active] [class*="chat_"] [class*="username_"] {font-size:12px!important;}
+html[data-mini-active] [class*="chat_"] [class*="timestamp_"] {font-size:10px!important;}
+html[data-mini-active] [class*="channelTextArea_"] :is([class*="giftButton_"],[class*="stickerButton_"],[class*="gifButton_"],[aria-label*="Send a gift"],[aria-label*="贈送禮物"]) {display:none!important;}
+html[data-mini-active] [class*="channelTextArea_"] [role="textbox"] {font-size:var(--mini-font,13px)!important;}
+#mini-dm-toggle {position:fixed;right:8px;top:8px;z-index:2147483647;border:1px solid #a1a1aa;border-radius:5px;padding:4px 8px;font:11px system-ui,sans-serif;background:#f4f4f5;color:#27272a;cursor:pointer;}
+#mini-dm-toggle[hidden] {display:none!important;}
+
+/* Bubble presentation. Only author-classified message rows are changed. */
+html[data-mini-active] li[data-mini-side="self"] [class*="message_"][class*="cozy_"],
+html[data-mini-active] li[data-mini-side="other"] [class*="message_"][class*="cozy_"] {padding:2px 12px!important; margin:0!important; min-height:0!important;}
+html[data-mini-active] li[data-mini-side="self"] [class*="message_"] > [class*="contents_"],
+html[data-mini-active] li[data-mini-side="other"] [class*="message_"] > [class*="contents_"] {display:flex!important;flex-direction:column;align-items:flex-start;min-width:0;}
+html[data-mini-active] li[data-mini-side="self"] [class*="message_"] > [class*="contents_"] {align-items:flex-end;}
+html[data-mini-active] li[data-mini-side="self"] [class*="message_"] > [class*="contents_"] > img[class*="avatar_"],
+html[data-mini-active] li[data-mini-side="other"] [class*="message_"] > [class*="contents_"] > img[class*="avatar_"] {display:none!important;}
+html[data-mini-active] li[data-mini-side] [class*="contents_"] > [class*="header_"] {margin:3px 0!important;line-height:14px!important;}
+html[data-mini-active] li:is([data-mini-side="self"],[data-mini-side="other"]) [class*="contents_"] > [class*="header_"] [class*="username_"] {display:none!important;}
+html[data-mini-active] li:is([data-mini-side="self"],[data-mini-side="other"]) [class*="contents_"] > [class*="messageContent_"] {display:block!important;width:fit-content!important;max-width:85%!important;box-sizing:border-box;padding:6px 10px!important;border-radius:12px;overflow-wrap:anywhere;white-space:pre-wrap;}
+html[data-mini-active] li[data-mini-side="self"] [class*="contents_"] > [class*="messageContent_"] {border-bottom-right-radius:4px;}
+html[data-mini-active] li[data-mini-side="other"] [class*="contents_"] > [class*="messageContent_"] {border-bottom-left-radius:4px;}
+html[data-mini-active] li[data-mini-side="self"] [data-mini-accessory] {margin-left:auto;}
+html[data-mini-active] [class*="chat_"] [class*="title_"] {padding-right:8px!important;min-width:0!important;}
+html[data-mini-active] [class*="chat_"] [class*="title_"] #mini-dm-toggle {position:static!important;flex:none;margin-left:auto;white-space:nowrap;}
+html[data-mini-active] [class*="channelTextArea_"] :is([class*="giftButton_"],[class*="gifButton_"],[class*="appLauncher_"],[aria-label*="GIF"],[aria-label*="贈送"],[aria-label*="禮物"],[aria-label*="應用程式"],[aria-label*="Send a gift"],[aria-label*="Apps"]) {display:none!important;}
+@media(max-width:480px){
+ html[data-mini-active] [class*="chat_"] [class*="title_"] {padding-left:8px!important;}
+ html[data-mini-active] [class*="channelTextArea_"] {margin-left:0!important;margin-right:0!important;}
+ html[data-mini-active] [class*="chat_"] form {padding-inline:8px!important;}
+ html[data-mini-active] [class*="channelTextArea_"] [role="textbox"] {min-width:0!important;}
+}
+
+/* v0.5: neutralize native cozy offsets within classified message rows. */
+html[data-mini-active] li:is([data-mini-side="self"],[data-mini-side="other"]) [class*="message_"][class*="cozy_"] {
+  box-sizing:border-box!important; width:100%!important; max-width:100%!important;
+  padding-inline:12px!important; margin-inline:0!important; text-indent:0!important;
+}
+html[data-mini-active] li:is([data-mini-side="self"],[data-mini-side="other"]) [class*="message_"] > [class*="contents_"] {
+  box-sizing:border-box!important; width:100%!important; max-width:100%!important;
+  margin:0!important; padding:0!important; inset:auto!important; transform:none!important; text-indent:0!important;
+}
+html[data-mini-active] li:is([data-mini-side="self"],[data-mini-side="other"]) [class*="contents_"] > :is([class*="messageContent_"],[class*="header_"]) {
+  margin-inline:0!important; inset:auto!important; transform:none!important; text-indent:0!important; position:relative!important;
+}
+html[data-mini-active] li[data-mini-side="other"] [class*="message_"] > [class*="contents_"] > [class*="messageContent_"] {align-self:flex-start!important; margin-left:0!important; margin-right:auto!important;}
+html[data-mini-active] li[data-mini-side="self"] [class*="message_"] > [class*="contents_"] > [class*="messageContent_"] {align-self:flex-end!important; margin-left:auto!important; margin-right:0!important;}
+html[data-mini-active] li[data-mini-side] [class*="contents_"] > [class*="messageContent_"] {min-width:0!important; max-width:85%!important; overflow-wrap:anywhere!important;}
+html[data-mini-active] li[data-mini-side] [class*="contents_"] > [class*="header_"] {padding:0!important; width:auto!important;}
+html[data-mini-active] li[data-mini-side] [class*="contents_"] > [class*="messageContent_"] [class*="jumboable_"] {max-width:100%!important;}
+/* Keep restoration reachable even when Discord hides its header controls. */
+#mini-dm-toggle {position:fixed!important;top:8px!important;right:8px!important;}
+
+/* v0.6: align the actual accessories row, not just the text bubble. */
+html[data-mini-active] li:is([data-mini-side="self"],[data-mini-side="other"]) [class*="message_"] > [data-mini-accessory] {
+ display:flex!important; flex-direction:column!important; width:fit-content!important; max-width:85%!important; min-width:0!important; box-sizing:border-box!important; padding-inline:0!important; transform:none!important; text-indent:0!important;
+}
+html[data-mini-active] li[data-mini-side="self"] [class*="message_"] > [data-mini-accessory] {margin-inline:auto 0!important; align-items:flex-end!important;}
+html[data-mini-active] li[data-mini-side="other"] [class*="message_"] > [data-mini-accessory] {margin-inline:0 auto!important; align-items:flex-start!important;}
+html[data-mini-active] li[data-mini-side] [data-mini-accessory] > * {max-width:100%!important; min-width:0!important;}
+html[data-mini-active] li[data-mini-side] [data-mini-accessory] :is([class*="imageWrapper_"],[class*="mediaAttachmentsContainer_"],[class*="embed_"],[class*="attachment_"]) {max-width:100%!important; min-width:0!important;}
+html[data-mini-active] li[data-mini-side] [data-mini-accessory] img {max-width:100%!important; object-fit:contain;}
+html[data-mini-active] li[data-mini-side] [class*="message_"] > [class*="repliedMessage_"] {max-width:85%!important; margin-inline:0!important; transform:none!important;}
+html[data-mini-active] li[data-mini-side="self"] [class*="message_"] > [class*="repliedMessage_"] {margin-left:auto!important;}
+/* v0.7: reply previews follow their actual message, not quoted author. */
+html[data-mini-active] li[data-mini-side] [class*="message_"] > [class*="repliedMessage_"] {
+ display:flex!important; position:relative!important; inset:auto!important; transform:none!important; width:fit-content!important; max-width:85%!important; min-width:0!important; box-sizing:border-box!important; padding:4px 8px!important; text-indent:0!important; border-inline-start:2px solid #a1a1aa; border-radius:5px; background:#8881; margin-block:2px!important; gap:4px; overflow:hidden;
+}
+html[data-mini-active] li[data-mini-side="self"] [class*="message_"] > [class*="repliedMessage_"] {margin-inline:auto 0!important;}
+html[data-mini-active] li[data-mini-side="other"] [class*="message_"] > [class*="repliedMessage_"] {margin-inline:0 auto!important;}
+html[data-mini-active] li[data-mini-side] [class*="repliedMessage_"]::before {display:none!important;}
+html[data-mini-active] li[data-mini-side] [class*="repliedMessage_"] :is([class*="repliedTextPreview_"],[class*="repliedTextContent_"]) {min-width:0!important;max-width:100%!important;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+html[data-mini-active] li[data-mini-side] [class*="contents_"] > [class*="messageContent_"] {font-size:var(--mini-font,13px)!important;}
+
+
+html[data-mini-active][data-mini-compact] li[data-mini-side] [class*="message_"][class*="cozy_"] {padding-block:1px!important;}
+html[data-mini-active][data-mini-compact] li[data-mini-side] [class*="contents_"] > [class*="header_"] {margin:1px 0!important;line-height:12px!important;}
+html[data-mini-active][data-mini-compact] li[data-mini-side] [class*="contents_"] > [class*="messageContent_"] {padding:4px 9px!important;}
+html[data-mini-active] [data-mini-nick] {font-size:0!important;}
+html[data-mini-active] [data-mini-nick]::after {content:attr(data-mini-nick);font-size:14px;color:inherit;}
+#mini-tools {position:fixed;top:6px;right:90px;z-index:2147483646;display:flex;align-items:center;gap:4px;font:12px system-ui;color:#27272a;}
+#mini-tools button,#mini-tools input,#mini-tools textarea {font:inherit;color:#27272a;background:white;border:1px solid #bfc4cc;border-radius:5px;padding:4px;}
+#mini-tools button {cursor:pointer;white-space:nowrap;}
+#mini-tools [hidden],#mini-tools[hidden] {display:none!important;}
+#mini-tools section {position:fixed;right:8px;top:38px;width:min(290px,calc(100vw - 16px));max-height:70vh;overflow:auto;background:white;color:#27272a;border:1px solid #ddd;border-radius:8px;padding:12px;box-shadow:0 4px 18px #0002;display:flex;flex-direction:column;gap:10px;box-sizing:border-box;}
+#mini-tools label {display:flex;align-items:center;justify-content:space-between;gap:6px;flex-wrap:wrap;}
+#mini-tools input:not([type=checkbox]) {max-width:130px;}
+#mini-tools textarea {width:100%;box-sizing:border-box;}
+#mini-tools a {color:#245ba5;margin-right:8px;}
+#mini-unread {color:#245ba5;white-space:nowrap;}
+
+/* v0.9: native mode preserves Discord foreground and background layers. */
+html[data-mini-active]:not([data-mini-theme="light"]):not([data-mini-theme="custom"]) li[data-mini-side] [class*="contents_"] > [class*="messageContent_"] {
+ background:color-mix(in srgb, currentColor 9%, transparent);
+}
+html[data-mini-active]:not([data-mini-theme="light"]):not([data-mini-theme="custom"]) li[data-mini-side="self"] [class*="contents_"] > [class*="messageContent_"] {
+ background:color-mix(in srgb, var(--brand-500,#5865f2) 22%, transparent);
+}
+html[data-mini-active]:is([data-mini-theme="light"],[data-mini-theme="custom"]) li[data-mini-side] [class*="contents_"] > [class*="messageContent_"] {background:#eceef1;color:#263142!important;}
+html[data-mini-active]:is([data-mini-theme="light"],[data-mini-theme="custom"]) li[data-mini-side="self"] [class*="contents_"] > [class*="messageContent_"] {background:#dceafb;}
+html[data-mini-active][data-mini-theme="light"] [class*="messagesWrapper_"] {background:#f8f8f8!important;}
+html[data-mini-active][data-mini-theme="custom"] [class*="messagesWrapper_"] {background:var(--mini-bg,#f8f8f8)!important;}
+html[data-mini-active][data-mini-theme="custom"] li[data-mini-side] [class*="contents_"] > [class*="messageContent_"] {background:var(--mini-other,#eceef1);}
+html[data-mini-active][data-mini-theme="custom"] li[data-mini-side="self"] [class*="contents_"] > [class*="messageContent_"] {background:var(--mini-self,#dceafb);}
+#mini-tools select {font:inherit;color:#27272a;background:white;border:1px solid #bfc4cc;border-radius:5px;padding:4px;max-width:145px;}
+
+/* DM layout: hide navigation by structure, not transient accessibility roles.
+   Never hide an ancestor containing the actual chat pane. */
+html[data-mini-active] :is([class^="guilds_"],[class*=" guilds_"],[class^="sidebar_"],[class*=" sidebar_"],[class^="sidebarList_"],[class*=" sidebarList_"]):not(:has([class^="chat_"],[class*=" chat_"])):not(:is([class^="chat_"],[class*=" chat_"])){display:none!important;}
+html[data-mini-active] :is([class^="chat_"],[class*=" chat_"]):has([class*="messagesWrapper_"],[data-list-id="chat-messages"]) {
+ display:flex!important; flex:1 1 0%!important; min-width:0!important; width:100%!important; max-width:100%!important; visibility:visible!important; transform:none!important; inset:auto!important; position:relative!important;
+}
+html[data-mini-active] :is([class^="content_"],[class*=" content_"]):has(> :is([class^="chat_"],[class*=" chat_"])) {
+ display:flex!important; min-width:0!important; width:100%!important; transform:none!important; visibility:visible!important;
+}
+
+#mini-settings-btn[data-mini-need-self] {position:relative;}
+#mini-settings-btn[data-mini-need-self]::after {content:"";position:absolute;top:-2px;right:-2px;width:7px;height:7px;border-radius:50%;background:#e5484d;pointer-events:none;}
